@@ -1,0 +1,65 @@
+package com;
+/*
+ * @author MSFATA ProgrammingHelp
+ */
+
+import java.util.Scanner;
+
+public class ChangeStringLetters {
+	/*
+	 * moving letters to following
+	 *  letter while not changing 
+	 *  special characters and number 
+	 *  and capitalising vowel letters
+	 */
+	public static String LetterChanges(String str) {
+		char[] ch = str.toLowerCase().toCharArray();
+		//(a, e, i, o, u)
+		char temp = ' ';
+		String str1 = "";
+		String resultString="";
+		for (char c : ch) {
+			
+			if (c >= ' ' && c <= '~') {
+				if (c >= ' ' && c <= '/' || c>=':'&&c<='@' || c>='['&&c<='`'|| c>='{'&&c<='~' || c>='0'&&c<='9') {
+					temp = (char) +(c);
+					str1 += temp;
+				} else if (c == 'z') {
+					str1 += 'A';
+				} else {
+					temp = (char) +(c + 1);
+					str1 += temp;
+				}
+			}
+		}
+	    
+		char [] result=str1.toCharArray();
+	   for (int i = 0; i < result.length; i++) {
+		if(result[i]=='a') {
+			result[i]='A';
+		}else if(result[i]=='e'){
+			result[i]='E';
+		}else if(result[i]=='i'){
+			result[i]='I';
+		}else if(result[i]=='o'){
+			result[i]='O';
+		}else if(result[i]=='u'){
+			result[i]='U';
+		}
+	}
+		for (char c : result) {
+			resultString+=c;
+		}
+		
+		return resultString;
+	}
+
+	/*
+	 * testing it
+	 */
+	public static void main(String[] args) {
+		System.out.println("write some text");
+		Scanner s = new Scanner(System.in);
+		System.out.print(LetterChanges(s.nextLine()));
+	}
+}
